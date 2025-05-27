@@ -15,12 +15,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Diallo',
-            'prenom' => 'Mohamed',
-            'email' => 'diallo@gmail.com',
-            'password' => '123456789',
-            'role' => 'admin',
-        ]);
+        // Check if the user already exists
+        if (!User::where('email', 'diallo@gmail.com')->exists()) {
+            User::factory()->create([
+                'name' => 'Diallo',
+                'prenom' => 'Mohamed',
+                'email' => 'diallo@gmail.com',
+                'password' => '123456789',
+                'role' => 'admin',
+            ]);
+        }
     }
 }
